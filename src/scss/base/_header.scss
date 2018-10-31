@@ -1,0 +1,11 @@
+// Header
+.b-header {
+
+}
+
+// Logo
+.b-logo {
+    img {
+        @include fluid-calc('max-height', sm, xl, 50px, 100px);
+    }
+}

@@ -1,0 +1,23 @@
+.b-footer__top {
+    @include fluid-calc('height', sm, xl, 3px, 5px);
+    background: linear-gradient(to right, $brand-primary, $brand-secondary);
+}
+
+.b-footer__bottom {
+    background: $text-color;
+    padding: get-gutter() / 2 0;
+
+    font-size: to-rem(14px);
+    color: #fff;
+
+    a {
+        color: #fff;
+    }
+
+    .container {
+        @include mq(md) {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

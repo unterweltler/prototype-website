@@ -1,0 +1,15 @@
+nav {
+    ul {
+        @include list-unstyled;
+    }
+}
+
+.b-menu-footer__list {
+    display: flex;
+
+    li {
+        + li {
+            margin-left: get-gutter() / 2;
+        }
+    }
+}

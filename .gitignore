@@ -1,0 +1,5 @@
+/.idea/*
+/dist/*
+
+# Package manager folders
+node_modules

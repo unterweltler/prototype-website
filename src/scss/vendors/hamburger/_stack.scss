@@ -1,0 +1,29 @@
+@if index($hamburger-animations, stack) {
+    .#{$hamburger-class-name}--stack {
+        span.#{$hamburger-class-name}__bar {
+            transition: transform .3s / $hamburger-animation-speed $hamburger-easing,
+                        top .4s / $hamburger-animation-speed $hamburger-easing .3s / $hamburger-animation-speed;
+        }
+
+        &.#{$hamburger-active-class-name} {
+            span.#{$hamburger-class-name}__bar {
+                transition: transform .3s / $hamburger-animation-speed $hamburger-easing .4s / $hamburger-animation-speed,
+                            top .4s / $hamburger-animation-speed $hamburger-easing;
+
+                &:nth-child(1) {
+                    transform: rotate(45deg);
+                    top: 0;
+                }
+
+                &:nth-child(2) {
+                    transform: rotate(45deg);
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(-45deg);
+                    top: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+@mixin u-link-icon {
+    display: inline-flex;
+    align-items: center;
+
+    &:before {
+        content: '';
+
+        display: block;
+        width: 2rem;
+        height: 2rem;
+
+        margin-right: get-gutter() / 2;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+    }
+}
+
+a {
+    &:not(.c-btn) {
+        &:hover,
+        &:focus {
+            text-decoration: none;
+
+            span {
+                @include underline;
+            }
+        }
+    }
+}
+
+.u-link--underline {
+    span {
+        @include underline;
+    }
+}
+
+.u-link--back {
+    @include u-link-icon;
+
+    &:before {
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: svg-url('
+            <svg xmlns="http://www.w3.org/2000/svg" width="300.7" height="512" viewBox="0 0 300.7 512">
+                <path fill="#{$text-color}" d="M237.5 7.7L7.7 237.5c-10.2 10.2-10.2 26.8 0 37l229.8 229.8c10.2 10.2 26.8 10.2 37 0l18.5-18.5c10.2-10.2 10.2-26.8 0-37L100.2 256 293 63.2c10.2-10.2 10.2-26.8 0-37L274.5 7.7c-10.2-10.3-26.8-10.3-37 0z"/>
+            </svg>
+        ');
+    }
+}
+
+.u-link--svg {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+        width: 2rem;
+        height: 2rem;
+
+        margin-right: get-gutter() / 2;
+    }
+}

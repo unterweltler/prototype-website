@@ -1,0 +1,56 @@
+@import 'dependencies';
+
+// IndexSearch
+
+div.tx-indexedsearch-browsebox {
+    &:first-child {
+        margin-bottom: get-gutter();
+    }
+
+    &:last-child {
+        margin-top: get-gutter();
+    }
+}
+
+.tx-indexedsearch-res {
+    border-top: 1px solid #ccc;
+    margin-top: get-gutter();
+    padding-top: get-gutter();
+
+    strong {
+        @include underline();
+    }
+}
+
+// Pagination
+
+ul.tx-indexedsearch-browsebox {
+    @include list-unstyled();
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    li {
+        margin: 5px;
+
+        &.tx-indexedsearch-browselist-currentPage {
+            text-decoration: underline;
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 35px;
+        height: 35px;
+    }
+}

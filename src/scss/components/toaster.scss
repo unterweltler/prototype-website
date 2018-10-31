@@ -1,0 +1,69 @@
+@import 'dependencies';
+
+#c-toast-loaf {
+    position: fixed;
+    z-index: 999;
+    right: get-gutter() / 2;
+    bottom: get-gutter() / 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.c-toast {
+    overflow: hidden;
+    opacity: 0;
+
+    padding: get-gutter() / 3 get-gutter() / 2;
+
+    background: scale-color(#000, $lightness: 85%);
+    border: 1px solid rgba(#000, 0.25);
+
+    & + & {
+        margin-top: 5px;
+    }
+
+    &.fadein {
+        animation: fadein 0.5s forwards;
+    }
+
+    &.fadeout {
+        animation: fadeout 0.5s forwards;
+    }
+}
+
+.c-toast--static {
+    cursor: pointer;
+
+    &:after {
+        content: '\00d7';
+
+        margin-left: 10px;
+    }
+}
+
+@keyframes fadein {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        height: auto;
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}

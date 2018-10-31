@@ -1,0 +1,63 @@
+// fluid calculation
+@mixin fluid-calc($prop, $min-vw, $max-vw, $min-size, $max-size, $min-return: true) {
+    @if unit($min-size) == 'px' {
+        $min-size: to-rem($min-size);
+    }
+
+    @if unit($min-size) == 'em' {
+        $min-size: $min-size * 1rem;
+    }
+
+    @if unit($max-size) == 'px' {
+        $max-size: to-rem($max-size);
+    }
+
+    @if unit($max-size) == 'em' {
+        $max-size: $max-size * 1rem;
+    }
+
+    @if $min-return {
+        #{$prop}: $min-size;
+    }
+
+    @include mq(#{$min-vw}) {
+        #{$prop}: calc(#{$min-size} + (#{strip-unit($max-size - $min-size)}) * ((100vw - #{to-rem(map-get($mq-breakpoints, $min-vw))}) / #{strip-unit(to-rem(map-get($mq-breakpoints, $max-vw)) - to-rem(map-get($mq-breakpoints, $min-vw)))}));
+    }
+
+    @include mq(#{$max-vw}) {
+        #{$prop}: $max-size;
+    }
+}
+
+@mixin y-gutter($gutter, $type) {
+    $gutter: $gutter / 2;
+
+    @if $type == 'inner' {
+        margin-top: to-rem($gutter);
+        margin-bottom: to-rem($gutter);
+    }
+    @else {
+        $gutter: $gutter * -1;
+
+        margin-top: to-rem($gutter);
+        margin-bottom: to-rem($gutter);
+    }
+}
+
+@mixin make-y-gutters($gutter: $grid-gutter, $type: 'inner') {
+    @if (type-of($gutter) == 'map') {
+        @each $breakpoint, $width in $gutter {
+            @if $breakpoint == nth($mq-breakpoints-list, 1) {
+                @include y-gutter($width, $type);
+            }
+            @else {
+                @include mq($breakpoint) {
+                    @include y-gutter($width, $type);
+                }
+            }
+        }
+    }
+    @else {
+        @include y-gutter($gutter, $type);
+    }
+}

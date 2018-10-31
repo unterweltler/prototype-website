@@ -1,0 +1,19 @@
+h1 {
+    @include fluid-calc('font-size', sm, xl, 30px, 54px);
+}
+
+h2 {
+    @include fluid-calc('font-size', sm, xl, 26px, 48px);
+}
+
+h3 {
+    @include fluid-calc('font-size', sm, xl, 20px, 32px);
+}
+
+.u-text--center {
+    text-align: center;
+}
+
+.u-text--right {
+    text-align: right;
+}

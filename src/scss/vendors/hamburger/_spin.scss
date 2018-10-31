@@ -1,0 +1,38 @@
+@if index($hamburger-animations, spin) {
+    .#{$hamburger-class-name}--spin {
+        > .#{$hamburger-class-name}__inner {
+            transition: transform .5s / $hamburger-animation-speed $hamburger-easing;
+        }
+
+        span.#{$hamburger-class-name}__bar {
+            transition: transform .5s / $hamburger-animation-speed $hamburger-easing,
+                        top .25s / $hamburger-animation-speed $hamburger-easing .25s / $hamburger-animation-speed,
+                        opacity .25s / $hamburger-animation-speed $hamburger-easing .25s / $hamburger-animation-speed;
+        }
+
+        &.#{$hamburger-active-class-name} {
+            span.#{$hamburger-class-name}__bar {
+                top: 0;
+                transition: transform .5s / $hamburger-animation-speed $hamburger-easing,
+                            top .25s / $hamburger-animation-speed $hamburger-easing,
+                            opacity .25s / $hamburger-animation-speed $hamburger-easing;
+
+                &:nth-child(1) {
+                    transform: rotate(135deg);
+                }
+
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(45deg);
+                }
+            }
+
+            > .#{$hamburger-class-name}__inner {
+                transform: rotate(180deg) translate3d(0, -$hamburger-thickness, 0);
+            }
+        }
+    }
+}

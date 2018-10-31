@@ -1,0 +1,41 @@
+@import "dependencies";
+
+.c-btn {
+    .b-section--highlight &,
+    .b-cookienotice & {
+        position: relative;
+        overflow: hidden;
+
+        background-color: transparent;
+        background-image: linear-gradient(to right, $brand-primary, $brand-secondary);
+
+        &:before {
+            content: '';
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background: $brand-secondary;
+
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover,
+        &:focus {
+            border-color: $brand-secondary;
+
+            &:before {
+                opacity: 1;
+            }
+        }
+
+        span {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+@import "dependencies";
+
+// Hero
+.c-hero {
+    position: relative;
+
+    .b-page--home & {
+        padding-bottom: 75%;
+
+        transform: skewY(-5deg);
+        transform-origin: 0;
+
+        @include mq(md) {
+            padding-bottom: 50%;
+        }
+    }
+}
+
+.c-hero-pattern {
+    overflow: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.c-hero-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: get-gutter() / 2 0;
+
+    h1 {
+        margin: 0;
+        //@include fluid-calc('margin-top', sm, xl, 50px, 0);
+        @include fluid-calc('font-size', sm, xl, 20px, 30px);
+        color: #fff;
+
+        text-shadow: 3px 3px rgba(#000, 0.5);
+    }
+
+    svg {
+        @include fluid-calc('width', sm, xl, 50px, 100px);
+        @include fluid-calc('height', sm, xl, 35px, 70px);
+        @include fluid-calc('margin-right', sm, xl, get-gutter() / 2, get-gutter());
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    .b-page--home & {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        text-align: center;
+
+        h1 {
+            @include fluid-calc('font-size', sm, xl, 30px, 100px);
+            text-shadow: 5px 5px rgba(#000, 0.5);
+        }
+
+        svg {
+            position: absolute;
+            @include fluid-calc('top', sm, xl, get-gutter() / 1.5, get-gutter() * 2);
+            @include fluid-calc('left', sm, xl, get-gutter() / 1.5, get-gutter() * 2);
+        }
+
+        .container {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+.is-video-initialized,
+.embed__poster {
+    z-index: 200; // layer video above cover object
+}
+
+.embed__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    cursor: pointer;
+    outline: none;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    text-indent: -999em;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+        content: '';
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transition: border-width 0.3s, background-color 0.3s;
+    }
+
+    &:before {
+        width: 80px;
+        height: 80px;
+
+        margin: -40px 0 0 -40px;
+
+        border: 3px solid #fff;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    &:after {
+        width: 0;
+        height: 0;
+
+        margin: -20px 0 0 -10px;
+
+        border-left: 30px solid #fff;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+    }
+
+    &:hover,
+    &:focus {
+        &:before {
+            border-width: 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .is-video-initialized & {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

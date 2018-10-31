@@ -1,0 +1,21 @@
+@import 'dependencies';
+
+.map {
+    &:before {
+        content: '';
+        display: block;
+        padding-bottom: 60%;
+    }
+
+    @include mq(md) {
+        &:before {
+            padding-bottom: 50%;
+        }
+    }
+
+    @include mq(lg) {
+        &:before {
+            padding-bottom: 40%;
+        }
+    }
+}

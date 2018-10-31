@@ -1,0 +1,33 @@
+@import 'dependencies';
+
+.c-masonry {
+    @include mq(md) {
+        @supports (display: grid) {
+            display: grid;
+            grid-gap: get-gutter() / 2;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 1px;
+        }
+    }
+}
+
+.c-masonry-item {
+    position: relative;
+    visibility: hidden;
+
+    &.is-loaded {
+        visibility: visible;
+    }
+
+    & + & {
+        margin-top: get-gutter() / 2;
+    }
+
+    @include mq(md) {
+        @supports (display: grid) {
+            & + & {
+                margin-top: 0;
+            }
+        }
+    }
+}

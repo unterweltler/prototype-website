@@ -1,0 +1,193 @@
+@import 'dependencies';
+
+$form-gutter: get-gutter() / 2 !default;
+$error-color: #c00 !default;
+
+// hide form titles
+
+.powermail_form h3,
+.powermail_legend {
+    @include sr-only;
+}
+
+// hide labels on nolabel options
+
+.powermail_form.nolabel {
+    .powermail_fieldwrap_type_input,
+    .powermail_fieldwrap_type_textarea {
+        label {
+            @include sr-only;
+        }
+    }
+}
+
+// recalc grid for powermail fields
+
+.powermail_fieldset {
+    @include make-gutters($form-gutter, outer);
+
+    .col {
+        @include make-gutters($form-gutter);
+    }
+}
+
+// default spacing for field wrapper (form-group)
+
+.powermail_fieldwrap {
+    margin-bottom: 1em;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+// required field styling
+
+.powermail_fieldwrap_required {
+    label {
+        font-weight: bold;
+    }
+
+    [placeholder].placeholder {
+        font-weight: bold;
+    }
+
+    [placeholder]::placeholder {
+        font-weight: bold;
+    }
+}
+
+// fieldwrap inline styles
+
+.powermail_fieldwrap_inline {
+    &.powermail_fieldwrap_type_check,
+    &.powermail_fieldwrap_type_radio {
+        .powermail_field {
+            @include mq(sm) {
+                display: flex;
+                flex-wrap: wrap;
+
+                margin-bottom: -5px;
+
+                .radio,
+                .checkbox {
+                    margin: 0 15px 5px 0;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// error styles
+
+.powermail_message,
+.parsley-errors-list {
+    list-style: none;
+    padding-left: 0;
+    color: $error-color;
+}
+
+.parsley-errors-list {
+    margin-top: 5px;
+    font-size: 0.875em;
+}
+
+#{$input-selector} {
+    &.parsley-error {
+        border-color: $error-color;
+    }
+}
+
+.parsley-error {
+    > label {
+        color: $error-color;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        + label::before {
+            border-color: $error-color;
+        }
+
+        + label:hover::before,
+        &:focus + label::before {
+            border-color: $error-color;
+        }
+    }
+
+    &.powermail_field_error_container {
+        flex: 1 1 100%;
+    }
+}
+
+// materialize label styles
+
+.form-group--materialize {
+    &.powermail_fieldwrap_type_input,
+    &.powermail_fieldwrap_type_textarea,
+    &.powermail_fieldwrap_type_select {
+        position: relative;
+
+        label {
+            color: $placeholder-color;
+            text-align: left;
+
+            position: absolute;
+            top: 0.9rem;
+            left: calc(#{$form-gutter / 2} + 1rem);
+            font-size: $font-size-base;
+
+            padding: 0;
+
+            cursor: text;
+
+            transition: 0.2s ease-out;
+
+            pointer-events: none;
+
+            span {
+                vertical-align: super;
+                font-size: to-rem(10px);
+            }
+
+            &.active {
+                font-size: 0.725rem;
+
+                transform: translateY(-45%);
+            }
+
+            .form__wrapper & {
+                color: #fff;
+            }
+        }
+
+        input,
+        select,
+        .select:after {
+            height: 3em;
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 0.8rem $input-padding-horizontal 0;
+        }
+
+        textarea {
+            padding-top: 1.175em;
+            //height: $input-height * 2;
+        }
+    }
+}
+
+.powermail_fieldwrap_type_check {
+    font-size: to-rem(14px);
+}
+
+.powermail_fieldwrap_type_submit {
+    text-align: right;
+}

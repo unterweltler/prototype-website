@@ -1,0 +1,16 @@
+.lazy {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: inherit;
+    pointer-events: none;
+}
+
+.lazy img {
+    width: 100%;
+    height: auto;
+}
+
+.lazy--hide {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}

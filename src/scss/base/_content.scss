@@ -1,0 +1,58 @@
+.b-content {
+    flex: 1 0 auto;
+}
+
+// Section
+.b-section {
+    margin: get-gutter() * 2 0;
+
+    @include mq(xl) {
+        margin: get-gutter() * 3 0;
+    }
+
+    .container {
+        @include mq(md) {
+            padding-left: get-gutter() * 2;
+            padding-right: get-gutter() * 2;
+        }
+
+        @include mq(xl) {
+            max-width: 70%;
+        }
+    }
+}
+
+.b-section--narrow {
+    margin: get-gutter() * 2 0;
+}
+
+.b-section--highlight {
+    padding: get-gutter() * 2 0;
+
+    background: $text-color;
+    color: #fff;
+
+    @include mq(xl) {
+        padding: get-gutter() * 3 0;
+    }
+}
+
+.b-section--skew {
+    transform: skewY(-5deg);
+    transform-origin: 0;
+}
+
+// Headline
+.b-headline {
+    &:before {
+        content: '';
+
+        display: block;
+        @include fluid-calc('width', sm, xl, 30px, 50px);
+        @include fluid-calc('height', sm, xl, 3px, 5px);
+
+        margin-bottom: 5px;
+
+        background: linear-gradient(to right, $brand-primary, $brand-secondary);
+    }
+}
